@@ -1,0 +1,24 @@
+INSTALACIÓN DE DJANGO
+=====================
+1.- Instalar Python 					[ python --version]
+2.- Crear Entorno Virtual				[ python -m venv { myvenv } ]
+3.- Activar Entorno Virtual				[ myvenv\Scritps\ activate.bat ]
+4.- Actualizar Paquetes pip				[ python -m pip install --upgrade pip]
+5.- Instalar Django					[ pip install Django ]
+-------------------------------------------------------------------------------------------------------------------
+6.- Crear Proyecto					[ django-admin startproject instituto .]
+7.- Levantar Proyecto					[ python manage.py runserver ]
+
+8.- Abrir Carpeta Proyecto en vCode			[ instituto ]
+9.- Activar entorno virtual				[F1 "Selecionar interprete" myvenv ]
+================================================================================
+
+
+CREANDO APLICACIÓN ALUMNOS
+===========================
+10 Abrir Terminal cmd en vCode			[ Ctrl+Shit+ñ ]
+11.- Crear Aplicación ALUMNOS                   		[ python manage.py startapp alumnos ]
+12.- Configurar Setting.py		                  	[ LANGUAGE_CODE, TIME_ZONE  ]
+13.- Configurar Rutas de Aplicacion              		[ urls.py ]
+14.- Crear Carpeta template en Aplicación        	[ templates/alumnos ]
+15.- Crear Archivo index.html
