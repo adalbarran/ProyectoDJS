@@ -1,0 +1,58 @@
+{% extends '../index.html' %}
+
+{% block title %}Gestión de Artículo{% endblock %}
+
+{% block body %}
+<section style="background-color: gray; background-image: url(https://www.pjud.cl/img/corte_suprema/fotogrande_5_6050000.jpg); background-repeat:no-repeat;
+background-size: cover;
+background-repeat:no-repeat;
+background-position: center center;
+background-attachment: fixed;">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+          <strong class="text-light">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <h1 class="text-center text-light">Listado de Servicios</h1>
+        <h1 class="text-center text-light">{{ user.username }}</h1>
+
+        <div class="d-flex justify-content-center mt-3">
+          <a href="{% url 'nuevoser' %}" class="btn btn-primary">Agregar Servicios</a>
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-striped" style="background-color: rgb(255, 255, 255);">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>ABOGADO</th>
+                <th>TIPO_DE_SERVICIO</th>
+                <th>FECHA_CREACION</th>
+                <th colspan="2">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ser in servicios %}
+              <tr>
+                <td>{{ ser.ID_servicio }}</td>
+                <td>{{ ser.Abogado }}</td>
+                <td>{{ ser.Tipo_de_Servicio }}</td>
+                <td>{{ ser.fecha_creacion }}</td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

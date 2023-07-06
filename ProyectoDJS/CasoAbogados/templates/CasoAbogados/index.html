@@ -49,7 +49,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Servicios <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'servicios' %}">Servicios <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contacto</a>
@@ -144,6 +144,7 @@
     
 
 
+   
 
 
 
@@ -153,7 +154,6 @@ background-size: cover;
   background-position: center center;
   
   background-attachment: fixed; ">
- {% block body %}
 
  
  <section  style=" border-radius: 5px;
@@ -191,6 +191,7 @@ background-size: cover;
      </div>
    </div>
  </section>
+ {% block body %}
  <section style="background-color: rgba(0, 0, 0, 0.603);">
 
 
@@ -199,7 +200,7 @@ background-size: cover;
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="3500">
       <div class="carousel-inner text-center">
         <div class="carousel-item active">
-          <div class="card mx-auto" style="width: 200px; border: 1px solid; padding: 10px; box-shadow: 5px 10px 8px #888888;">
+          <div class="card mx-auto" style="width: 200px; border: 1px solid; padding: 10px; box-shadow: 5px 10px 8px #888888;" >
             <div class="card-body">
               Nuestro bufete de abogados emergente te brinda asesoramiento especializado y resultados sólidos.
             </div>
@@ -228,15 +229,7 @@ background-size: cover;
   </section>    
 
 
-  <section>
-
-    <div class="card mx-auto" style="width: 400px; border: 1px solid; padding: 10px; box-shadow: 5px 10px 8px #888888; margin-top: 100px;">
-      <div class="card-body" style="text-align: center;">
-        Ofrecemos variedad de servicios para el cliente.
-      </div>
-    </div>
-
-  </section>
+ 
 
 
 
@@ -245,24 +238,62 @@ background-size: cover;
  <section>
   <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 10px; margin-right: 50px;">
-      <img src="{% static 'img/imgcaso/negocios-para-Abogados.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+      
     </div>
+    <div class="d-flex justify-content-center">
+      <div>
+        <a href="{% url 'servicios' %}">
+
+          <img src="{% static 'img/imgcaso/negocios-para-Abogados.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+
+
+        </a>
+        <p style="text-align: center; color: white; margin-top: 10px;">Click para gestionar servicio.</p>
+      </div>
+    </div>
+    
+
+
     <div class="d-flex align-items-center" style="height: 100vh;">
-      <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 10px;">
-        <img src="{% static 'img/imgcaso/72910.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+
+      <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 50px; position: relative;">
+        <div>
+          <a href="{% url 'servicios' %}">
+
+            <img src="{% static 'img/imgcaso/72900.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+
+
+          </a>
+          <p style="text-align: center; color: white; margin-top: 10px;">Click para gestionar servicio.</p>
+
+
+        </div>
       </div>
+      
+
+      
       <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 50px;">
-        <img src="{% static 'img/imgcaso/72900.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+        <div>
+          <a href="{% url 'servicios' %}">
+
+            <img src="{% static 'img/imgcaso/72906.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+
+
+          </a>
+          <p style="text-align: center; color: white; margin-top: 10px;">Click para gestionar servicio.</p>
+
+
+        </div>
       </div>
-      <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 50px;">
-        <img src="{% static 'img/imgcaso/72906.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
-      </div>
-      <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 50px;">
-        <img src="{% static 'img/imgcaso/72851.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
-      </div>
+
     </div>
   </div>
 </section>
+
+
+
+
+
 
 </section>
 
@@ -337,10 +368,10 @@ background-attachment: fixed;">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 justify-content-end align-items-center">
-        <img src="{% static 'img/imgcaso/fotoinfocontacto.jpeg' %}" alt="" style="width: 150px; height: auto; object-fit: contain; float: left; margin: 10px; ">
+        <img src="{% static 'img/imgcaso/72660.jpg' %}" alt="" style="width: 150px; height: auto; object-fit: contain; float: left; margin: 10px; ">
         <section >
           <p class="text-white" style="margin: 10px; width: 500px;">
-            Taller Mecánico FastCar
+            DJS Abogados.
 
           </p>
 
