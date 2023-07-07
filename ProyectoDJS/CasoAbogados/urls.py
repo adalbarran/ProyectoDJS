@@ -17,6 +17,8 @@ urlpatterns = [
 
   path('gestionser', views.gestionser, name='gestionser'),
 
+  path('editarservicio/<ID_servicio>', views.editarservicio, name='editarservicio'),
+  path('borrarservicio/<ID_servicio>', views.borrarservicio, name='borrarservicio'),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

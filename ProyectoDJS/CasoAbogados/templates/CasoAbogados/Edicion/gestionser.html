@@ -45,7 +45,8 @@ background-attachment: fixed;">
                 <td>{{ ser.Abogado }}</td>
                 <td>{{ ser.Tipo_de_Servicio }}</td>
                 <td>{{ ser.fecha_creacion }}</td>
-
+                <td><a href="{% url 'editarservicio' ser.ID_servicio %}" class="btn btn-primary">Editar</a></td>
+                <td><a href="{% url 'borrarservicio' ser.ID_servicio %}" class="btn btn-danger btn-Eliminacion">Eliminar</a></td>
               </tr>
               {% endfor %}
             </tbody>
