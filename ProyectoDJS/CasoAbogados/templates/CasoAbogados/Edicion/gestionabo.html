@@ -1,0 +1,69 @@
+{% extends '../index.html' %}
+
+{% block title %}Gestión de Personas{% endblock %}
+
+{% block body %}
+<section style="background-color: gray; background-image: url(https://www.pjud.cl/img/corte_suprema/fotogrande_5_6050000.jpg); background-repeat:no-repeat;
+background-size: cover;
+background-repeat:no-repeat;
+background-position: center center;
+background-attachment: fixed;">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+          <strong class="text-light">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <h1 class="text-center text-light">Listado de Abogados</h1>
+        <h1 class="text-center text-light">{{ user.username }}</h1>
+
+        <div class="d-flex justify-content-center mt-3">
+          <a href="{% url 'nuevoabogado' %}" class="btn btn-primary">Agregar Abogados</a>
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-striped" style="background-color: rgb(255, 255, 255);">
+            <thead>
+              <tr>
+                <th>RUT</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO PATERNO</th>
+                <th>APELLIDO MATERNO</th>
+                <th>NACIMIENTO</th>
+                <th>TELEFONO</th>
+                <th>AREA</th>
+                <th>CORREO</th>
+                <th>IMG</th>
+                <th colspan="2">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for abo in abogado %}
+              <tr>
+                <td>{{ abo.rut }}</td>
+                <td>{{ abo.nombre }}</td>
+                <td>{{ abo.apellido_paterno }}</td>
+                <td>{{ abo.apellido_materno }}</td>
+                <td>{{ abo.fec_nac }}</td>
+                <td>{{ abo.telefono }}</td>
+                <td>{{ abo.area }}</td>
+                <td>{{ abo.email }}</td>
+                <td><img src="{{abo.img.url}}" alt="" width="50px"></td>
+                <td><a href="{% url 'editarabogado' abo.rut %}" class="btn btn-primary">Editar</a></td>
+                <td><a href="{% url 'borrarabogado' abo.rut %}" class="btn btn-danger btn-Eliminacion">Eliminar</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

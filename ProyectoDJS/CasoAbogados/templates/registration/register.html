@@ -1,0 +1,14 @@
+{% extends '../CasoAbogados/index.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+{{error}}
+
+<h2>Registro</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Registrarse</button>
+</form>

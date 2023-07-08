@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Servicios
 from django.contrib import messages
 from django.shortcuts import render,get_object_or_404,redirect
-
+from .models import Abogado
 from .forms import ServiciosForm
+from .forms import AbogadoForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
@@ -14,9 +15,33 @@ def index(request):
     context={}
     return render(request, 'CasoAbogados/index.html', context)
 
+#GESTION USUARIOS
+def signin(request):
+    if request.method == 'GET':
+        return render(request, 'registration/login.html',{
+        'form': AuthenticationForm
+    })
+    else:
+        user = authenticate(
+            request, username=request.POST['username'], password=request.POST
+            ['password'])
+        if user is None:
+            return render(request, 'registration/login.html',{
+                'form': AuthenticationForm,
+                'error': 'Username o contraseÃ±a incorrecta'
+            })
+        else:
+            login(request, user)
+            return redirect('index')
 
+def signout(request):
+    logout(request)
+    return redirect('index')
 
-
+def abogados(request):
+    abogados = Abogado.objects.all()
+    context={"abogados":abogados}
+    return render(request, 'CasoAbogados/abogados.html', context)
 
 
 def servicios(request):
@@ -24,7 +49,7 @@ def servicios(request):
     context={"servicios":servicios}
     return render(request, 'CasoAbogados/servicios.html', context)
 
-
+#CRUDSERVICIOS
 def gestionser(request):
     servicios = Servicios.objects.all()
     context={"servicios":servicios}
@@ -51,6 +76,32 @@ def borrarservicio(request, ID_servicio):
     messages.success(request, '¡Servicio Eliminado!')
     return redirect('gestionser')
 
+#CRUDABOGADOS
+def gestionabo(request):
+    abogados = Abogado.objects.all()
+    context={"abogados":abogados}
+    return render(request, 'CasoAbogados/Edicion/gestionabo.html', context)
+
+def nuevoabogado(request):
+    formulario = AbogadoForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+       formulario.save()
+       return redirect('gestionabo')
+    return render(request, "CasoAbogados/Edicion/nuevoabogado.html", {"formulario": formulario})    
+
+def editarabogado(request, rut):
+    abogados = Abogado.objects.get(rut=rut)
+    formulario = AbogadoForm(request.POST or None, request.FILES or None, instance=abogado)
+    if formulario.is_valid() and request.method == 'POST':
+        formulario.save()
+        return redirect('gestionabo')
+    return render(request, "CasoAbogados/Edicion/editarabogado.html", {"formulario": formulario})
+
+def borrarabogado(request, rut):
+    abogados = Abogado.objects.get(rut = rut)
+    abogados.delete()
+    messages.success(request, '¡Abogado Eliminado!')
+    return redirect('gestionabo')
 
 #GESTION USUARIOS
 # def login(request):

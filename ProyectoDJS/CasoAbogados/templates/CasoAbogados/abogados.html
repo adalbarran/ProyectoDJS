@@ -51,9 +51,9 @@
 
     <form class="form container-form" method="get" style="margin-top: 0px; width: 100%; max-width: 400px;">
       <fieldset>
-        <legend class="text-center header">Gestión de Servicios</legend>
+        <legend class="text-center header">Gestión de Abogados</legend>
         <div class="container text-center py-2" style="margin-bottom: 100px; margin-top: 100px;">
-          <a href="{% url 'gestionser' %}" class="btn btn-primary" style="margin-top: 50px; margin-bottom: 100px;">Gestión de Servicios</a>
+          <a href="{% url 'gestionabo' %}" class="btn btn-primary" style="margin-top: 50px; margin-bottom: 100px;">Gestión de Abogados</a>
         </div>
       </fieldset>
     </form>
@@ -68,18 +68,18 @@
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for ser in servicios %}
+        {% for abo in abogado %}
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ ser.img.url }}" alt="">
+            <img src="{{ abo.img.url }}" alt="">
             <div class="card-body">
               <div class="card-text">
-                <p>ID_servicio: {{ ser.ID_servicio }} <br>
-                  Encargado: {{ ser.Encargado }} <br>
-                  Tipo de Servicio: {{ ser.Tipo_de_Servicio }} <br>
-                  Fecha de Creacion: {{ ser.fecha_creacion }}
-
-                </p>
+                <p>{{abo.rut}} <br>
+                    Nombre: {{abo.nombre}} <br>
+                    Area: {{abo.area}} <br>
+                    Telefono: {{abo.telefono}}
+                    Correo: {{abo.email}}
+                  </p>
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
