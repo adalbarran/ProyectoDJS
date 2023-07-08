@@ -1,21 +1,21 @@
-
 from django.forms import ModelForm
 from django import forms
-from .models import  Servicios
-from .models import  Abogado
+from .models import Caso
+from .models import Abogado
 
-class ServiciosForm(forms.ModelForm):
+class CasoForm(forms.ModelForm):
     class Meta:
-        model = Servicios 
-        #fields = ['ID', 'Abogado, 'Tipo de Servicio', 'fecha_creacion'] 
-   
+        model = Caso
         fields = '__all__' 
 
 class AbogadoForm(forms.ModelForm):
     class Meta:
         model = Abogado
-        #fields = ['rut', 'nombre', 'apellido_paterno', 'apellido_materno', 
-         #         'fec_nac', 'telefono', 'area', 'email' 'img' ] 
-   
         fields = '__all__' 
 
+class ContactForm(forms.Form):
+    nombre = forms.CharField(label='Nombre')
+    correo = forms.EmailField(label='Correo')
+    numero = forms.CharField(label='Número de Teléfono')
+    abogado = forms.ModelChoiceField(queryset=Abogado.objects.all(), label='Abogado')
+    contexto = forms.CharField(label='Contexto del Caso', widget=forms.Textarea)

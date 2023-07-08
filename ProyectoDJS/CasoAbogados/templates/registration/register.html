@@ -1,14 +1,45 @@
 {% extends '../CasoAbogados/index.html' %}
+{% block title %} PG | Register {% endblock %}
 
-{% load static %}
+{% block body %}
+<div class="container" style="margin-bottom: 0px; margin-top: 0px; width: 5000px; height: 1000px;">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+          <div class="card-body">
+            <form method="post" class="form-register">
+              <h2 class="text-center">Registro</h2>
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="userTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Seleccionar tipo de usuario
+                </button>
+                <div class="dropdown-menu" aria-labelledby="userTypeDropdown">
+                  <a class="dropdown-item" href="#" data-value="Abogado">Abogado</a>
+                  <a class="dropdown-item" href="#" data-value="Cliente">Cliente</a>
+                </div>
+              </div>
+              <input type="hidden" id="selectedUserType" name="selectedUserType" value="">
+              <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-{% block contenido %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
 
-{{error}}
-
-<h2>Registro</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Registrarse</button>
-</form>
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      const selectedUserType = item.getAttribute('data-value');
+      document.getElementById('selectedUserType').value = selectedUserType;
+      document.getElementById('userTypeDropdown').textContent = `Seleccionado: ${selectedUserType}`;
+    });
+  });
+});
+</script>
+{% endblock %}

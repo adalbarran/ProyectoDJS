@@ -49,16 +49,22 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'servicios' %}">Servicios <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'casos' %}">Casos <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'abogados' %}">Abogados</a>
+        </li>
+        </li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Solicitar</a>
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
         </li>
         {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Registro</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
@@ -242,7 +248,7 @@ background-size: cover;
     </div>
     <div class="d-flex justify-content-center">
       <div>
-        <a href="{% url 'servicios' %}">
+        <a href="{% url 'casos' %}">
 
           <img src="{% static 'img/imgcaso/negocios-para-Abogados.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
 
@@ -258,7 +264,7 @@ background-size: cover;
 
       <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 50px; position: relative;">
         <div>
-          <a href="{% url 'servicios' %}">
+          <a href="{% url 'casos' %}">
 
             <img src="{% static 'img/imgcaso/72900.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
 
@@ -274,7 +280,7 @@ background-size: cover;
       
       <div class="d-flex align-items-center" style="height: auto; margin-top: 10px; margin-left: 50px;">
         <div>
-          <a href="{% url 'servicios' %}">
+          <a href="{% url 'casos' %}">
 
             <img src="{% static 'img/imgcaso/72906.jpg' %}" alt="Girl in a jacket" style="width: 200px; height: 700px; object-fit: cover;" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
 

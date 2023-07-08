@@ -11,12 +11,11 @@ class Servicios(models.Model):
     Tipo_de_Servicio = models.CharField(max_length=90, blank=True, null=True, verbose_name='Tipo_de_Servicio')
     fecha_creacion = models.DateField(auto_now=False, verbose_name='fecha_creacion')
 
-    def __str__(self):
-        return str(self.Abogado)
+    def str(self):
+        return str(self.ID_servicio)
 
     class Meta:
-        ordering = ['Abogado']
-       
+        ordering = ['ID_servicio']
 
 class Abogado(models.Model):
     rut = models.AutoField(primary_key=True, db_column='rut')
@@ -30,7 +29,7 @@ class Abogado(models.Model):
     img = models.ImageField(upload_to='img/', null=True, blank=True, verbose_name='img')
 
     def __str__(self):
-        return str(self.rut)
+        return str(self.nombre)
     class Meta:      
         ordering = ['rut']
 
@@ -38,4 +37,12 @@ class Abogado(models.Model):
         self.img.storage.delete(self.img.name)
         return super().delete()    
 
-        
+class Caso(models.Model):
+    ID_caso = models.AutoField(primary_key=True, db_column='ID_caso')
+    Abogado = models.ForeignKey(Abogado, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    fecha_creacion = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.titulo

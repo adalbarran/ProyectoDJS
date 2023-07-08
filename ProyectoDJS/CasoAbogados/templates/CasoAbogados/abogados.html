@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-<style>     .card-container {
+<!-- <style>     .card-container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -45,7 +45,7 @@
 
 
 
-<section>
+<section> -->
 
   <main class="container shade" style="margin-bottom: 500px; display: flex; justify-content: center; align-items: center;">
 
@@ -68,17 +68,16 @@
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for abo in abogado %}
+        {% for abo in Abogado %}
         <div class="col">
           <div class="card shadow-sm">
             <img src="{{ abo.img.url }}" alt="">
             <div class="card-body">
               <div class="card-text">
-                <p>{{abo.rut}} <br>
-                    Nombre: {{abo.nombre}} <br>
+                <p>{{abo.nombre}} <br>
                     Area: {{abo.area}} <br>
-                    Telefono: {{abo.telefono}}
-                    Correo: {{abo.email}}
+                    Telefono: {{abo.telefono}}<br>
+                    Correo: {{abo.email}}<br>
                   </p>
               </div>
               <div class="d-flex justify-content-between align-items-center">

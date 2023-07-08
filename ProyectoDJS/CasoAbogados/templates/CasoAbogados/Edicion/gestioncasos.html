@@ -1,6 +1,6 @@
 {% extends '../index.html' %}
 
-{% block title %}Gestión de Artículo{% endblock %}
+{% block title %}Gestión de Caso{% endblock %}
 
 {% block body %}
 <section style="background-color: gray; background-image: url(https://www.pjud.cl/img/corte_suprema/fotogrande_5_6050000.jpg); background-repeat:no-repeat;
@@ -20,11 +20,11 @@ background-attachment: fixed;">
         {% endfor %}
         {% endif %}
 
-        <h1 class="text-center text-light">Listado de Servicios</h1>
+        <h1 class="text-center text-light">Listado de Casos</h1>
         <h1 class="text-center text-light">{{ user.username }}</h1>
 
         <div class="d-flex justify-content-center mt-3">
-          <a href="{% url 'nuevoser' %}" class="btn btn-primary">Agregar Servicios</a>
+          <a href="{% url 'nuevocaso' %}" class="btn btn-primary">Agregar Caso</a>
         </div>
 
         <div class="table-responsive mt-3">
@@ -32,21 +32,23 @@ background-attachment: fixed;">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>ABOGADO</th>
-                <th>TIPO_DE_SERVICIO</th>
-                <th>FECHA_CREACION</th>
+                <th>Rut del Abogado</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Fecha de Creación</th>
                 <th colspan="2">Opciones</th>
               </tr>
             </thead>
             <tbody>
-              {% for ser in servicios %}
+              {% for caso in Caso %}
               <tr>
-                <td>{{ ser.ID_servicio }}</td>
-                <td>{{ ser.Abogado }}</td>
-                <td>{{ ser.Tipo_de_Servicio }}</td>
-                <td>{{ ser.fecha_creacion }}</td>
-                <td><a href="{% url 'editarservicio' ser.ID_servicio %}" class="btn btn-primary">Editar</a></td>
-                <td><a href="{% url 'borrarservicio' ser.ID_servicio %}" class="btn btn-danger btn-Eliminacion">Eliminar</a></td>
+                <td>{{ caso.ID_caso }}</td>
+                <td>{{ caso.rut }}</td>
+                <td>{{ caso.titulo }}</td>
+                <td>{{ caso.descripcion }}</td>
+                <td>{{ caso.fecha_creacion }}</td>
+                <td><a href="{% url 'editarcaso' caso.ID_caso %}" class="btn btn-primary">Editar</a></td>
+                <td><a href="{% url 'borrarcaso' caso.ID_caso %}" class="btn btn-danger btn-Eliminacion">Eliminar</a></td>
               </tr>
               {% endfor %}
             </tbody>

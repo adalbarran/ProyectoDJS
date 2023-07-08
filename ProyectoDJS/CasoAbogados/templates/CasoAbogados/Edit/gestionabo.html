@@ -23,11 +23,11 @@ background-attachment: fixed;">
         <h1 class="text-center text-light">Listado de Abogados</h1>
         <h1 class="text-center text-light">{{ user.username }}</h1>
 
-        <div class="d-flex justify-content-center mt-3">
+        <div class="p-2">
           <a href="{% url 'nuevoabogado' %}" class="btn btn-primary">Agregar Abogados</a>
         </div>
 
-        <div class="table-responsive mt-3">
+        <div class="table-responsive py-3">
           <table class="table table-striped" style="background-color: rgb(255, 255, 255);">
             <thead>
               <tr>
@@ -44,7 +44,7 @@ background-attachment: fixed;">
               </tr>
             </thead>
             <tbody>
-              {% for abo in abogado %}
+              {% for abo in Abogado %}
               <tr>
                 <td>{{ abo.rut }}</td>
                 <td>{{ abo.nombre }}</td>

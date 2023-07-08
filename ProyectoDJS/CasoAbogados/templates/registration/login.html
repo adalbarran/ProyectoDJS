@@ -11,6 +11,16 @@
               <h2 class="text-center">Iniciar sesión</h2>
               {% csrf_token %}
               {{ form.as_p }}
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="userTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Seleccionar tipo de usuario
+                </button>
+                <div class="dropdown-menu" aria-labelledby="userTypeDropdown">
+                  <a class="dropdown-item" href="#" data-value="Abogado">Abogado</a>
+                  <a class="dropdown-item" href="#" data-value="Cliente">Cliente</a>
+                </div>
+              </div>
+              <input type="hidden" id="selectedUserType" name="selectedUserType" value="">
               <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
             </form>
           </div>
@@ -18,4 +28,18 @@
       </div>
     </div>
   </div>
-{% endblock %} 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      const selectedUserType = item.getAttribute('data-value');
+      document.getElementById('selectedUserType').value = selectedUserType;
+      document.getElementById('userTypeDropdown').textContent = `Seleccionado: ${selectedUserType}`;
+    });
+  });
+});
+</script>
+{% endblock %}
