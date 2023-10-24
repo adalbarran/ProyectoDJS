@@ -75,6 +75,13 @@ def casos(request):
     context = {"casos": casos}
     return render(request, 'CasoAbogados/casos.html', context)
 
+# PESTAÑAS AGREGADAS POR XINO
+def sucursales(request):
+    return render(request, 'CasoAbogados/sucursales.html')
+
+def servicios(request):
+    return render(request, 'CasoAbogados/servicios.html')
+
 #CRUDSERVICIOS
 def gestioncasos(request):
     casos = Caso.objects.all()

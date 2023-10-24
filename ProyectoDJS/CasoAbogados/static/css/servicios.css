@@ -1,0 +1,9 @@
+#list{
+    height: 800px;
+    width: auto;
+    margin: 15px;
+}
+
+.li-text{
+    font-family: 'Times New Roman', Times, serif;
+}

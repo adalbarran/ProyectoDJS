@@ -1,5 +1,6 @@
 from django.urls import path, include
 from  . import views
+from .views import sucursales
 from django.conf.urls.static import static
 from django.conf import settings 
 from django.contrib import admin
@@ -13,6 +14,8 @@ urlpatterns = [
   path('casos', views.casos, name='casos'),
   path('contact/', views.contact, name='contact'),
   path('contact_success/', views.contact, name='contact'),
+  path('sucursales', sucursales, name="sucursales"),
+  path('servicios', views.servicios, name="servicios"),
 
   path("accounts/", include("django.contrib.auth.urls")),
   path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
